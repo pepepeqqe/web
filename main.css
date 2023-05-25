@@ -5,6 +5,7 @@ body {
 }
 
 header {
+    background: linear-gradient(to right, black, lightyellow, pink, purple);
     margin: -8px;
     background-color: black;
     color: beige;
@@ -13,14 +14,17 @@ header {
 }
 
 footer {
+    background: linear-gradient(to left, black, lightyellow, pink, purple);
     font-size: 16pt;
     padding: 10px;
     margin: -8px;
     font-style: italic;
     text-align: right;
+    color: beige;
 }
+
 a {
-    color: green;
+    color: rgb(80, 160, 80);
     text-decoration: none;
 }
 
