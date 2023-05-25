@@ -11,6 +11,12 @@ header {
     color: beige;
     font-size: 16pt;
     padding: 10px;
+    transition: 1s;
+}
+header:hover {
+    background: linear-gradient(to left, black, lightyellow, pink, purple);
+    font-size: 24pt;
+    text-align: right;
 }
 
 footer {
@@ -21,6 +27,12 @@ footer {
     font-style: italic;
     text-align: right;
     color: beige;
+    transition: 1s;
+}
+footer:hover {
+    background: linear-gradient(to right, black, lightyellow, pink, purple);
+    font-size: 24pt;
+    text-align: left;
 }
 
 a {
