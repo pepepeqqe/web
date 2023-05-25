@@ -1,0 +1,23 @@
+body {
+    background-color: skyblue;
+    color: rgb(71, 83, 95);
+    font-family: Arial
+}
+header {
+    margin: -8px;
+    background-color: black;
+    color: beige;
+    font-size: 16pt;
+    padding: 10px;
+}
+footer {
+    font-size: 16pt;
+    padding: 10px;
+    margin: -8px;
+    font-style: italic;
+    text-align: right;
+}
+a {
+    color: greenyellow;
+    text-decoration: none;
+}
