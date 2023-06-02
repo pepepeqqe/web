@@ -18,7 +18,9 @@ header:hover {
     font-size: 24pt;
     text-align: right;
 }
-
+main {
+    margin: 10px 20px;
+}
 footer {
     background: linear-gradient(to left, black, lightyellow, pink, purple);
     position: fixed;
