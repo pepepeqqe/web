@@ -26,13 +26,17 @@
             let a = 5154;
             let b = 7891;
             let result = a + b;
-            alert('Сумма ' + a + ' и ' + b + ' равна ' + result)
-    }
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function author() {
+            let aut = 'Автор страницы, а так же человек, потерявший все сроки:\nГунгер Кирилл Андреевич';
+            alert (aut)
+        }
     </script>
 </head>
 
 <body>
-    <header>
+    <header onclick="author()">
         НГТУ, ФБ, Лабораторная работа 5
     </header>
     
@@ -41,12 +45,12 @@
             Сколько будет 5154+7891?
         </div>
 
-        <div class="message">
+        <div class="message" onclick="author()">
             Узнать, кто автор страницы
         </div>
     </main>
 
-    <footer>
+    <footer onclick="author()">
         &copy; Гунгер Кирилл, ФБИ-13, 2 курс, 2023
     </footer>
 </body>
