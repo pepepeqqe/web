@@ -22,7 +22,8 @@ header:hover {
 footer {
     background: linear-gradient(to left, black, lightyellow, pink, purple);
     position: fixed;
-    width: 100%;
+    z-index: 4;
+    width: 99%;
     bottom: 0;
     font-size: 16pt;
     padding: 10px;
