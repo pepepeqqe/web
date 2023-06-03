@@ -19,21 +19,60 @@
             border-color: brown;
             text-align: center;
             font-size: 20px;
+            margin: 10px;
+        }
+        #output{
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
         }
     </style>
     <script>   
         function sum() {
-            let inputA = document.getElementById('numberA')
-            let inputB = document.getElementById('numberB')
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
+        function dif(){
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a - b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function mult(){
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a * b;
+            alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+        }
+        function di(){
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a / b;
+            alert('Частное ' + a + ' и ' + b + ' равно ' + result);
+        }
         function author() {
             let aut = 'Автор страницы, а так же человек, потерявший все сроки:\nГунгер Кирилл Андреевич';
-            alert (aut)
+            alert (aut);
+        }
+        function changeOutput(buttonNum, backColor, textColor){
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
         }
     </script>
 </head>
@@ -46,13 +85,35 @@
     <main>
         <label>Первое число: <input type="number" value=5154 id="numberA"></label><br>
         <label>Второе число: <input type="number" value=7891 id="numberB"></label><br>
+
         <div class="message" onclick="sum()">
             Найти сумму чисел
+        </div>
+
+        <div class="message" onclick="dif()">
+            Найти разность чисел
+        </div>
+
+        <div class="message" onclick="mult()">
+            Найти произведение чисел
+        </div>
+
+        <div class="message" onclick="di()">
+            Найти произведение чисел
         </div>
 
         <div class="message" onclick="author()">
             Узнать, кто автор страницы
         </div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'lime', 'black')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'yellow', 'red')">
+        </div>
+
+        <div id="output"></div>
     </main>
 
     <footer onclick="author()">
