@@ -6,14 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гунгер Кирилл Андреевич. Лабораторная 5</title>
     <link rel="stylesheet" href="main.css">
+    <style>
+        .game{
+            border: 3px solid;
+            border-radius: 10px;
+            width: 500px;
+            text-align: center;
+            margin: auto;
+            margin-top: 10px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        let count = 0
+        let num
+        function Start(){
+            let screens = document.getElementsByClassName('game');
+            num = Math.floor(Math.random()*100) + 1;
+            screens[0].style.display = 'none'
+            screens[1].style.display = 'block'
+        }
+        function guess(){
+            let input = document.getElementById('userNumber');
+            let userNumber = parseInt(input.value);
+            let message = document.getElementById('result');
+            if (userNumber > 100){
+                message.innerHTML = 'Число должно быть от 1 до 100!';
+            }
+            else if (userNumber < 1){
+                message.innerHTML = 'Число должно быть от 1 до 100!';
+            }
+            else if (userNumber > num){
+                message.innerHTML = 'Вы ввели слишком большое число';
+                count++
+            }
+            else if (userNumber < num){
+                message.innerHTML = 'Вы ввели слишком маленькое число';
+                count++
+            }
+            else {
+                count++
+                let screens = document.getElementsByClassName('game')
+                screens[1].style.display = 'none';
+                screens [2].style.display = 'block'
+                let displayNumber = document.getElementById('number');
+                displayNumber.innerHTML = num;
+                document.getElementById('tryCount').innerHTML = count;
+            }
+
+        }
+        function again(){
+            let screens = document.getElementsByClassName('game')
+            num = Math.floor(Math.random()*100) + 1;
+            count = 0;
+            document.getElementById('result').innerHTML = '';
+            screens[2].style.display = 'none';
+            screens[1].style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <header>
-        НГТУ, ФБ, Лабораторная работа 5
+        НГТУ, ФБ, Лабораторная работа 6
     </header>
 
     <main>
+        <div class="game">
+            <button onclick="Start()">
+                Сыграть в игру
+            </button>
+        </div>
 
+        <div class="game" style="display: none;">
+            <h1>Угадай число!</h1>
+            <div>
+                Задумано число от 1 до 100. Угадайте, какое?<br>
+                <input type="number" min="1" max="100" id="userNumber"><br>
+                <button onclick="guess()">Угадать</button>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div class="game" style="display: none;">
+            <h1>Поздравляем, вы выиграли!</h1>
+            <div>
+                Задуманное число: <span id='number'></span>
+            </div>
+            <div>
+                Количество попыток: <span id="tryCount"></span>
+            </div>
+            <div>
+                <button onclick="again()">Сыграйте ещё раз!</button>
+            </div>
+        </div>
     </main>
 
     <footer>
