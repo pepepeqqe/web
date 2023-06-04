@@ -25,6 +25,23 @@
             border: 1px solid;
             width: 300px;
             height: 40px;
+        }   
+        .market{
+            margin-top: 10px;
+            border: 2px solid;
+            border-color: brown;
+            border-radius: 5px;
+            width: 600px;
+        }  
+        .circle{
+            border: 3px solid; 
+            border-radius: 100%; 
+            height: 50px; 
+            width: 50px; 
+            display: inline-block;
+            margin: 10px;
+            font-size: 24pt;
+            text-align: center;
         }
     </style>
     <script>   
@@ -65,7 +82,7 @@
             alert('Частное ' + a + ' и ' + b + ' равно ' + result);
         }
         function author() {
-            let aut = 'Автор страницы, а так же человек, потерявший все сроки:\nГунгер Кирилл Андреевич';
+            let aut = 'Автор страницы, а так же человек, не сдавший ничего в срок:\nГунгер Кирилл Андреевич';
             alert (aut);
         }
         function changeOutput(buttonNum, backColor, textColor){
@@ -73,6 +90,18 @@
             output.innerHTML = 'Нажата кнопка ' + buttonNum;
             output.style.backgroundColor = backColor;
             output.style.color = textColor;
+        }
+        function calculate(){
+            let n1 = document.getElementById('n1');
+            let n2 = document.getElementById('n2');
+            let n3 = document.getElementById('n3');
+            let n4 = document.getElementById('n4');
+            let res = parseInt(n1.value)*100 + parseInt(n2.value)*80 + parseInt(n3.value)*150 + parseInt(n4.value)*300;
+            korzina.innerHTML = "Общая цена: " + res + "р";
+        }
+        function decircle(cNum){
+            let circ = document.getElementById(cNum);
+            circ.style.display = 'none';
         }
     </script>
 </head>
@@ -114,6 +143,38 @@
         </div>
 
         <div id="output"></div>
+        
+        <div class="market">
+            <div style="margin: 10px;">
+                <h2>Корзина Товаров</h2>
+
+                Яблоки (100р/шт)<br>
+                <input type="number" id="n1" value="0"><br><br>
+
+                Груши (80р/шт)<br>
+                <input type="number" id="n2" value="0"><br><br>
+
+                Апельсины (150р/шт)<br>
+                <input type="number" id="n3" value="0"><br><br>
+
+                Дыни (300р/шт)<br>
+                <input type="number" id='n4' value="0"><br><br>
+
+                <input type="button" value="рассчитать" onclick="calculate()">
+
+                <div id = "korzina" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+            <div class="circle"  id="c1" style="background-color: red;" onclick="decircle(this.id)">1</div>
+            <div class="circle" onclick="decircle('c2')" id="c2" style="background-color: orange;">2</div>
+            <div class="circle" onclick="decircle(this.id)" id="c3" style="background-color: yellow;">3</div>
+            <div class="circle" onclick="decircle(this.id)" id="c4" style="background-color: green;">4</div>
+            <div class="circle" onclick="decircle(this.id)" id="c5" style="background-color: lightblue;">5</div>
+            <div class="circle" onclick="decircle(this.id)" id="c6" style="background-color: blue;">6</div>
+            <div class="circle" onclick="decircle(this.id)" id="c7" style="background-color: violet;">7</div>
+            <div class="circle" onclick="decircle(this.id)" id="c8" style="background-color: blueviolet;">8</div>
+            <div class="circle" onclick="decircle(this.id)" id="c9" style="background-color: yellowgreen;">9</div>
+            <div class="circle" onclick="decircle(this.id)" id="c10" style="background-color: orangered;">10</div>
     </main>
 
     <footer onclick="author()">
