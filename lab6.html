@@ -16,6 +16,15 @@
             margin-top: 10px;
             padding: 5px;
         }
+        .rules{
+            border: 3px solid;
+            border-radius: 10px;
+            width: 700px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 5px;
+            background-color: antiquewhite;
+        }
     </style>
     <script>
         let count = 0
@@ -63,6 +72,16 @@
             screens[2].style.display = 'none';
             screens[1].style.display = 'block';
         }
+        function rulesShow(){
+            let screens = document.getElementsByClassName('rules')
+            screens[0].style.display = 'none';
+            screens[1].style.display = 'block';
+        }
+        function rulesHide(){
+            let screens = document.getElementsByClassName('rules')
+            screens[1].style.display = 'none';
+            screens[0].style.display = 'block';
+        }
     </script>
 </head>
 <body>
@@ -99,6 +118,24 @@
                 <button onclick="again()">Сыграйте ещё раз!</button>
             </div>
         </div>
+
+
+        <div class="rules">
+            <button onclick="rulesShow()">Показать правила игры</button>
+        </div>
+
+        <div style="display: none;" class="rules">
+            <button onclick="rulesHide()">Скрыть правила игры</button>
+            <ol>
+                <li>Нажмите на кнопку "сыграть в игру"</li>
+                <li>В появившемся окне для ввода числа введите число от 1 до 100</li>
+                <li>В случаи, если введённое число меньше или больше загаданного, выведется соответсвующая надпись</li>
+                <li>Снова введите в окно число от 1 до 100</li>
+                <li>Повторяйте 4 действие пока не угадаете!</li>
+                <li>Что бы начать новую игру в случаи победы, нажмите кнопку "Сыграйте ещё раз!"</li>
+            </ol>
+        </div>
+
     </main>
 
     <footer>
