@@ -34,11 +34,38 @@
             text-align: center;
             padding-top: 100px;
             font-size: 20px;
+            user-select: none;
+        }
+        .moveBlock{
+            border: 3px solid; 
+            height: 150px; 
+            width: 150px; 
+            background-color: red;
+            margin: 50px 0 50px 0;
+            text-align: center;
+            line-height: 150px;
+            padding: 5px;
+            font-size: 20px;
+            position: sticky;
+            cursor: grab;
+            transition: all 5s ease-out;
+            left: auto;
+        }
+        .bigBlock{
+            border: 3px solid; 
+            height: 100px; 
+            width: 100px; 
+            background-color: blue;
+            margin: 50px 0 50px 0;
+
+            user-select: none;
+            cursor: grab;
         }
     </style>
     <script>
         let count = 0
         let num
+        let w = 100;
         function Start(){
             let screens = document.getElementsByClassName('game');
             num = Math.floor(Math.random()*100) + 1;
@@ -119,6 +146,57 @@
                 document.getElementById('colorName').innerHTML ='белый';
             }
         }
+        function changePos(div){
+            if (div.style.left =='auto') {
+                div.style.transform = 'rotate(4turn)';
+                div.style.left ='90%';
+            }
+            else {
+                div.style.transform = 'rotate(0)';
+                div.style.left ='auto';
+            } 
+        }
+        function bigger(div){
+            if (w<1001){
+                w+=50
+            }
+            else {
+                w=100
+            }
+        div.style.width = (w + 'px')
+        }
+        function filter(){
+            let color = document.getElementById('wearColor').value;
+            let type = document.getElementById('wearType').value;
+            let wear = document.getElementById('wear');
+            if (color == 'Красный' && type == 'Футболка') {
+                wear.src = 'red-f.jpg';
+            }
+            else if (color == 'Черный' && type == 'Футболка') {
+                wear.src = 'black-f.jpg';
+            }
+            else if (color == 'Белый' && type == 'Футболка') {
+                wear.src = 'white-f.jpg';
+            }
+            else if (color == 'Черный' && type == 'Майка') {
+                wear.src = 'black-m.jpg';
+            }
+            else if (color == 'Красный' && type == 'Майка') {
+                wear.src = 'red-m.jpg';
+            }
+            else if (color == 'Белый' && type == 'Майка') {
+                wear.src = 'white-m.jpg';
+            }
+            else if (color == 'Черный' && type == 'Поло') {
+                wear.src = 'black-p.jpg';
+            }
+            else if (color == 'Красный' && type == 'Поло') {
+                wear.src = 'red-p.jpg';
+            }
+            else {
+                wear.src = 'white-p.jpg';
+            }
+        }
     </script>
 </head>
 <body>
@@ -176,6 +254,27 @@
         <div class="color" ondblclick="changeColor(this)">
             Цвет: <span id="colorName">белый</span><br>
             Сделайте двойной щелчок, чтобы сметь цвет.
+        </div>
+
+        <div class="moveBlock" onclick="changePos(this)">Щёлкни меня</div>
+        <div class="bigBlock" onclick="bigger(this)"></div>
+        <div style="margin: 50px;">
+            Цвет одежды:
+            <select id="wearColor">
+                <option>Красный</option>
+                <option>Белый</option>
+                <option>Черный</option>
+            </select><br>
+            Тип одежды:
+            <select id="wearType">
+                <option>Футболка</option>
+                <option>Поло</option>
+                <option>Майка</option>
+            </select><br>
+
+            <button onclick="filter()">OK</button><br>
+            
+            <img id="wear">
         </div>
     </main>
 
