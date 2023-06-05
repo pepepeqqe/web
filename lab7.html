@@ -28,25 +28,25 @@
             }
 
         }
-        function showExchange() {
+        function showprice() {
         
-            let exchange = [70.5154, 70.1217, 70.0414, 70.3847, 70.5991, 70.8924, 71.5763, 72.8949, 72.7923, 73.6307];
-            let table = document.getElementById('dollar-exchange');
+            let price = [70.5154, 70.1217, 70.0414, 70.3847, 70.5991, 70.8924, 71.5763, 72.8949, 72.7923, 73.6307];
+            let table = document.getElementById('dollar-price');
 
-            for (let i = 0; i<exchange.length; i++) {
+            for (let i = 0; i < price.length; i++) {
                 let tr = document.createElement('tr');
                 let td = document.createElement('td');
-                td.innerHTML = exchange[i]
+                td.innerHTML = price[i]
                 tr.appendChild(td);
                 table.appendChild(tr)
             }
 
             let sum = 0;
-            for(let i = 0; i < exchange.length; i++) {
-                sum = sum + exchange [i];
+            for(let i = 0; i < price.length; i++) {
+                sum = sum + price [i];
             }
-            let average = sum / exchange.length;
-            document.getElementById('detail').innerHTML = 'Среднее значение: ' + average;
+            let avg = sum / price.length;
+            document.getElementById('detail').innerHTML = 'Среднее значение: ' + avg;
         }
         function addTransparenBlocks() {
             let opacity = 0;
@@ -73,6 +73,46 @@
                 circles.appendChild(circle);
             }
         }
+        function addProductTable() {
+            let a = 10;
+            let table = document.getElementById('product');
+            for (let i = 13; i<=33; i++) {
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                td.innerHTML = a + '*' + i + '=' + (a * i)
+                tr.appendChild(td);
+                table.appendChild(tr);
+            }
+        }
+        function course() {
+            let table = document.getElementById('tableCours');
+            let date = ['06-06-2023', '02-06-2023', '01-06-2023', '31-05-2023', '30-05-2023', 
+            '29-05-2023', '26-05-2023', '25-05-2023', '24-05-2023', '23-05-2023'];
+            let price = [11350, 11250, 11250, 11150, 11200,
+            11350, 11450, 11350, 12250, 11700];
+            let sum = 0;
+
+            for (let i = 0; i < price.length; i++) {
+                let tr = document.createElement('tr');
+                let tdPrice = document.createElement('td');
+                let tdDate = document.createElement('td');
+                let tdDifference = document.createElement('td');
+                tdPrice.innerHTML = price[i];
+                tdDate.innerHTML = date[i];
+                if (i!=0) {tdDifference.innerHTML = (price[i] - price[(i-1)])}
+                tr.appendChild(tdDate);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdDifference);
+                table.appendChild(tr);
+                sum += price [i];
+            }
+            let avg = sum / price.length;
+            let maxPrice = Math.max(...price);
+            let minPrice = Math.min(...price);
+            document.getElementById('avg').innerHTML = 'Среднее значение: ' + avg;
+            document.getElementById('max').innerHTML = 'Максимальная цена акции: ' + maxPrice;
+            document.getElementById('min').innerHTML = 'Минимальная цена акции: ' + minPrice;
+        }
     </script>
 </head>
 <body>
@@ -84,8 +124,8 @@
         <button onclick="addBlock()">Создать блоки</button>
         <div id="blocks"></div>
 
-        <button onclick="showExchange()">Курс доллара</button>
-        <table border="2" id="dollar-exchange"></table>
+        <button onclick="showprice()">Курс доллара</button>
+        <table border="2" id="dollar-price"></table>
         <div id="detail"></div>
 
         <button onclick="addTransparenBlocks()">Создать полупрозрачные блоки</button>
@@ -94,6 +134,16 @@
         <input type="number" value="5" placeholder="введите число кругов" id="circlesCount">
         <button onclick="redGreen()">красное/зелёное</button>
         <div id="circles"></div>
+
+        <button onclick="addProductTable()">Таблица умножения на 10</button>
+        <table id = 'product'></table>
+
+        <button onclick="course()">Курс акций Саратовский НПЗ</button>
+        <table border="1" id="tableCours"></table>
+        <div id="avg"></div>
+        <div id="max"></div>
+        <div id="min"></div>
+
     </main>
 
     <footer>
