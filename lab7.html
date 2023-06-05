@@ -6,13 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гунгер Кирилл Андреевич. Лабораторная 7</title>
     <link rel="stylesheet" href="main.css">
+    <style>
+        .circle{
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border: 2px solid;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20pt;
+        }
+    </style>
     <script>
         function addBlock () {
             let blocks = document.getElementById('blocks');
             for (let i=0; i < 10; i++ ) {
                 let block = document.createElement('div');
                 block.innerHTML = 'Блок №' + (i+1) + ':' + (2 * i**2);
-
                 blocks.appendChild(block); 
             }
 
@@ -48,6 +59,20 @@
                 opacity+=10
             }
         }
+        function redGreen() {
+            let input = document.getElementById('circlesCount');
+            let circles = document.getElementById('circles');
+            let c = parseInt(input.value)
+            for (i=0; i<c; i++){
+                let circle = document.createElement('div');
+                circle.innerHTML = (c-i);
+                circle.className = 'circle';
+                if (i%2 == 0) {
+                    circle.style.backgroundColor = 'green';
+                }
+                circles.appendChild(circle);
+            }
+        }
     </script>
 </head>
 <body>
@@ -66,6 +91,9 @@
         <button onclick="addTransparenBlocks()">Создать полупрозрачные блоки</button>
         <div id="transparent-blocks"></div>
 
+        <input type="number" value="5" placeholder="введите число кругов" id="circlesCount">
+        <button onclick="redGreen()">красное/зелёное</button>
+        <div id="circles"></div>
     </main>
 
     <footer>
